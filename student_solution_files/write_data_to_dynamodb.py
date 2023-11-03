@@ -41,22 +41,23 @@ def lambda_handler(event, context):
     # ** Instantiate the DynamoDB service with the help of the boto3 library **
     
     # --- Insert your code here ---
-    dynamodb = None # <--- Replace this value with your code.
+    dynamodb = boto3.resource('dynamodb')
+
     # -----------------------------
     
     # Instantiate the table. Remember pass the name of the DynamoDB table created in step 4
-    table = dynamodb.Table('# Insert the name of your generated DynamoDB table here')
+    table = dynamodb.Table('Data_From_Serverless_Site')
     
     # ** Write the responses to the table using the put_item method. **
 
     # Complete the below code so that the appropriate 
     # incoming data is sent to the matching column in your DynamoDB table
     # --- Insert your code here ---
-    db_response = table.put_item(Item={'ResponsesID': None, # <--- Insert the correct variable
-                        'Name': None, # <--- Insert the correct variable
-                        'Email': None, # <--- Insert the correct variable
-                        'Cell': None, # <--- Insert the correct variable
-                        'Message': None # <--- Insert the correct variable
+    db_response = table.put_item(Item={'ResponsesID': rid, # <--- Insert the correct variable
+                        'Name': data["name"], # <--- Insert the correct variable
+                        'Email': data["email"], # <--- Insert the correct variable
+                        'Cell': data["phone"], # <--- Insert the correct variable
+                        'Message': data["message"] # <--- Insert the correct variable
     })
     # -----------------------------
 
