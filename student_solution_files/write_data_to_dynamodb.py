@@ -23,9 +23,19 @@ import random #Needed to generate random numbers
 def lambda_handler(event, context):
     
     # Perform JSON data decoding 
-    body_enc = event['body']
-    dec_dict = json.loads(base64.b64decode(body_enc))
-    
+    #body_enc = event['body']
+    #dec_dict = json.loads(base64.b64decode(body_enc))
+
+    dec_dict = event
+
+    #Create a Dataframe from the decoded JSON dictionary
+
+    df = {
+         'statusCode': 200,
+         'body': json.dumps(f"Name: {dec_dict['name']}, Email:{dec_dict['email']}, Cell:{dec_dict['phone']}, Message: {dec_dict['message']}")
+    }
+
+   
     
     # --- Write to dynamodb ---
     
