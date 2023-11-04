@@ -56,7 +56,7 @@ def lambda_handler(event, context):
     # -----------------------------
     
     # Instantiate the table. Remember pass the name of the DynamoDB table created in step 4
-    table = dynamodb.Table('Data_From_Serverless_Site')
+    table = dynamodb.Table('Malvin_Predict_Table')
     
     # ** Write the responses to the table using the put_item method. **
 
